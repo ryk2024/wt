@@ -1,0 +1,92 @@
+<html>
+<body>
+<form method="POST" action="S15.php" >
+Enter String. : <input type="text" name="x">
+<input type="submit">
+</form>
+</body>
+</html>
+
+
+PHP
+
+
+<?php
+     $x=$_POST['x'];
+
+     function select($x)
+    {
+         
+        // $string = "This is a sample sentence to demonstrate selecting the first five words.";
+        $words = explode(' ', $x); // Split the string into an array of words
+        $firstFiveWords = implode(' ', array_slice($words, 0, 5)); // Join the first five words back into a string
+
+        echo "Original String: $x<br>";
+        echo "First Five Words: $firstFiveWords";
+    }
+
+   
+    
+     function LtoT(string $x)
+     {        
+     echo "LowerCase :-";
+              echo strtolower("$x");
+              $s = strtolower("$x");
+              echo "<br>TitleCase :-";
+              echo ucwords("$s");
+     } 
+     function pri($x)
+     {
+        $words = str_word_count($x, 1);
+        $firstFiveWords = implode(' ', array_slice($words, 0, 5));
+        echo $firstFiveWords;
+     }
+     pri($x);
+     function padding(string $x)
+     { 
+              $t=str_pad($x,50,'*',STR_PAD_BOTH);
+              echo "<br>PADDING : $t<br>";
+     }
+     
+     function wide($x)
+     {
+              $s=ltrim($x);
+              echo "<br> REMOVED WIDE SPACES :- $s<br>";
+           
+     }
+    
+     function reverse(string $x)
+     {
+              echo "Reversed :";
+              echo strrev($x);
+     }
+      select($x);
+      LtoT($x);
+      padding($x);
+      wide($x);
+      reverse($x);
+     
+     
+?>
+
+
+
+FDS
+
+# Q1
+# import numpy as np
+# import matplotlib.pyplot as plt
+# x=np.random.rand(50)
+# y=np.random.rand(50)
+# #plt.plot(x,y)
+# plt.hist(x,color="m",linewidth=2,edgecolor="b",bins=30,alpha=0.6)
+# plt.boxplot(x)
+# plt.scatter(x,y,color="m",marker="*")
+# plt.show()
+
+# Q2
+# import matplotlib.pyplot as plt
+# sub=['FDS','WT','TCS','CN']
+# marks=[77,89,80,92]
+# plt.pie(marks,labels=sub,autopct="%1.1f%%",explode=[0.5,0.0,0.0,0.0])
+# plt.show()

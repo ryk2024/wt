@@ -1,0 +1,81 @@
+<html>
+<body>
+<form action="S9.php" method="GET">
+Enter String : <input type="text" name="x">
+   Input a Separator 
+  <select name="s" id="s">
+    <option value="#">#</option>
+    <option value="@">@</option>
+    <option value="%">%</option>
+    <option value="!">!</option>
+  </select>
+  <br><br>
+  Enter a another Separator 
+  <select name="r" id="r">
+    <option value="#">#</option>
+    <option value="@">@</option>
+    <option value="%">%</option>
+    <option value="!">!</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+PHP
+
+<?php
+  
+$x=$_GET['x'];
+$s=$_GET['s'];
+$r=$_GET['r'];
+$str_arr = explode ($s, $x); 
+print_r($str_arr);
+echo"<br>";
+$os = str_replace($s, $r, $x);
+print_r($os);
+echo"<br>";
+$strr = strrchr($x,$s);
+echo "Last Word is $strr";
+?>
+
+
+FDS
+
+# Q2A)
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from matplotlib import colors
+# from matplotlib.ticker import PercentFormatter
+# no_of_balls=50
+# x = np.random.randn(50)
+# y = np.random.randn(50)
+# colors = [np.random.randint(1, 4) for i in range(no_of_balls)]
+# plt.plot(x,y)
+# plt.show()
+# plt.scatter(x,y,c=colors)
+# plt.show()
+
+
+# Q2B)
+# from matplotlib import pyplot as plt
+# import numpy as np
+# # Creating dataset
+# subjects = ['TCS', 'Data Science', 'OS',
+#  'JAVA', 'PHP', 'Python']
+# marks = [23, 17, 35, 29, 12, 33]
+# # Creating plot
+# # fig = plt.figure(figsize =(10, 7))
+# plt.pie(marks, labels = subjects)
+# # show plot
+# plt.show()
+
+
+# Q2C)
+# import pandas as pd
+# df = pd.read_csv('winequality-red.csv')
+# print("\n",df.shape) # no.of rows & cols
+# print("\n",df.describe()) #stats data
+# df.head(3)

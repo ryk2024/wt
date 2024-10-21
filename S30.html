@@ -1,0 +1,74 @@
+<html>
+	<body>
+		<form action="S30.php" method="GET">
+			Enter Event Title : <input type="text" name="t1">
+			<br><br>
+			<input type="submit">
+		</form>
+	</body>
+</html>
+
+php
+
+<?php
+	$et=$_GET['t1'];
+	$con=pg_connect("host=192.168.1.254 dbname=ty324 user=ty324 password=ty324");
+	if ($con)
+		echo "DataBase Connected <br>";
+	else
+		echo "DB not Connected";
+	$sql = <<<EOF
+		CREATE TABLE STUDENT(stud_id int primary key,name text,class text);
+		CREATE TABLE COMPETITION(c_no int primary key,c_name text,type text);
+		CREATE TABLE EC1(stud_id int references STUDENT(stud_id),c_no int references COMPETITION(c_no));
+		
+		INSERT INTO STUDENT VALUES(1,'abc','TY');
+		INSERT INTO STUDENT VALUES(2,'efg','TY');
+		INSERT INTO STUDENT VALUES(3,'xyz','SY');
+		
+		insert into COMPETITION values(11,'hockey','college level');
+		insert into COMPETITION values(22,'cricket','college level');
+		insert into COMPETITION values(33,'boxing','state level');
+		
+		
+		insert into EC1 values(1,1);
+		insert into EC1 values(2,2);
+		insert into EC1 values(3,3);
+		
+		
+		
+	EOF;
+	$ret=pg_query($con,$sql);
+	if (!$ret)
+		echo pg_last_error($con);
+	else
+		echo "Records Created Successfully!<br>";
+	$q1="select name from student where stud_id in(select c_no from ec1 where c_no in(select c_no from competition where c_name='boxing' and rank=1)');" ;
+	$updateSql=pg_query($q1);
+	echo "Status updated SUccessfully";
+	pg_close($con);
+?>
+
+
+# Q1. Generate a random array of 50 integers and display them using a line chart, 
+# scatter plot, histogram and box plot. Apply appropriate color, labels and styling 
+# options. 
+
+# import numpy as np
+# import matplotlib.pyplot as plt
+# x=np.random.rand(50)
+# y=np.random.rand(50)
+# #plt.plot(x,y)
+# plt.hist(x,color="m",linewidth=2,edgecolor="b",bins=30,alpha=0.6)
+# plt.boxplot(x)
+# plt.scatter(x,y,color="m",marker="*")
+# plt.show()
+
+# Q2. Create two lists, one representing subject names and the other representing 
+# marks obtained in those subjects. Display the data in a pie chart.
+
+# import matplotlib.pyplot as plt
+# sub=['FDS','WT','TCS','CN']
+# marks=[77,89,80,92]
+# plt.bar(marks,sub)
+# plt.show()

@@ -1,0 +1,81 @@
+<html>
+<body>
+    <form action="S25.php" method="GET">
+        Enter File name : <input type="text" name="f1" />
+        <br /><br />
+       
+        <input type="radio" name="op" value="1" />
+        1.Disp1ay type of file.....
+        <br />
+        <input type="radio" name="op" value="2" />
+        2.Display last access time of file.....
+        <br />
+        <input type="radio" name="op" value="3" />
+        3.Display size of file.....
+        <br />
+        <input type="radio" name="op" value="4" />
+        4.Delete the file.....
+        <br><br>
+        <input type="submit" />
+    </form>
+</body>
+</html>
+
+
+PHP
+
+<?php
+$file=$_GET["f1"];
+$fp=fopen($file,"r");
+$ch=$_GET["op"];
+switch($ch)
+{
+    case 1 :
+    $ft=filetype($file);
+    echo " The type of file is : ". $ft;
+    break;
+    case 2:
+    $lt=fileatime($file);
+    echo " The last accessed time of file  is : ". date("F D Y H:i:s",$lt);
+    break;
+    case 3:
+    $fs=filesize($file);
+    echo " The size of file is : ".$fs;
+    break;
+    case 4:
+    $b=unlink($file);
+    if($b==1)
+       echo " File is deleted.....";
+    else
+        echo " File is not deleted....";
+    
+    //default:"invalid choice";
+}
+?>
+
+
+FDS
+
+# 1. Generate a random array of 50 integers and display them using a line chart, 
+# scatter plot, histogram and box plot. Apply appropriate color, labels and styling 
+# options.
+
+# import numpy as np
+# import matplotlib.pyplot as plt
+# x=np.random.rand(50)
+# y=np.random.rand(50)
+# plt.plot(x,y)
+# plt.hist(x,color="m",linewidth=2,edgecolor="b",bins=30,alpha=0.6)
+# plt.boxplot(x)
+# plt.scatter(x,y,color="m",marker="*")
+# plt.show()
+
+
+# Q2. Create two lists, one representing subject names and the other representing 
+# marks obtained in those subjects. Display the data in a pie chart.
+
+# import matplotlib.pyplot as plt
+# sub=['FDS','WT','TCS','CN']
+# marks=[77,89,80,92]
+# plt.pie(marks,labels=sub,autopct="%1.1f%%",explode=[0.5,0.0,0.0,0.0])
+# plt.show()

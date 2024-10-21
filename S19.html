@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Manipulation</title>
+</head>
+<body>
+    <h2>String Manipulation</h2>
+    <form method="post" action="S19.php">
+        <label for="sentence">Enter a sentence:</label>
+        <input type="text" name="sentence" id="sentence" required><br><br>
+
+        <label for="word">Enter a word to manipulate:</label>
+        <input type="text" name="word" id="word" required><br><br>
+
+        <label for="position">Enter the position (0-based index):</label>
+        <input type="number" name="position" id="position" required><br><br>
+
+        <label for="num_chars">Enter the number of characters to remove/replace:</label>
+        <input type="number" name="num_chars" id="num_chars" required><br><br>
+
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+PHP
+21 23 24 
+<?php
+    $sentence=$_POST['sentence'];
+    $word=$_POST['word'];
+    $position=$_POST['position'];
+    $num_chars=$_POST['num_chars'];
+    // Task a: Delete a small part from the sentence
+    $modifiedSentenceA = substr_replace($sentence,'', $position, $num_chars);
+
+    // Task b: Insert the word in the sentence at a specified position
+    $modifiedSentenceB = substr_replace($sentence, $word, $position, 0);
+
+    // Task c: Replace some characters in the sentence with the word at a specified position
+    $modifiedSentenceC = substr_replace($sentence, $word, $position, $num_chars);
+
+    // Task d: Replace all characters in the sentence with the word after a specified position
+    $modifiedSentenceD = substr_replace($sentence, $word, $position);
+
+    echo "<h3>Modified Sentence (Task a): $modifiedSentenceA</h3>";
+    echo "<h3>Modified Sentence (Task b): $modifiedSentenceB</h3>";
+    echo "<h3>Modified Sentence (Task c): $modifiedSentenceC</h3>";
+    echo "<h3>Modified Sentence (Task d): $modifiedSentenceD</h3>";
+
+?>
+
+
+FDS
+
+# Q1. Write a Python program 
+# 1. To create a dataframe containing columns name, age and percentage. Add 5 rows to the dataframe. View the dataframe. 
+# 2. To print the shape, number of rows-columns, data types, feature names and the description of the data 
+# 3. To Add 5 rows with duplicate values and missing values. Add a column ‘remarks’ with empty values. Display the data.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+df=pd.DataFrame(columns=["Name","Age","Percentage"])
+df.loc[0]=["Sankalp",21,94]
+df.loc[1]=["Manas",20,94]
+df.loc[2]=["Rahul",19,74]
+df.loc[3]=["Aman",20,84]
+df.loc[4]=["Shwan",20,82]
+df.loc[5]=["Dhawan",21,82]
+df.loc[6]=["Shrawan",20,88]
+df.loc[7]=["Shatanu",21,92]
+df.loc[8]=["Shrawani",22,62]
+df.loc[9]=["Shawn",20,66]
+print(df)
+
+print("Shape of data:",df.shape);
+print("No of Rows and Columns:",df.size);
+print("Data Types:",df.dtypes);
+print("Feature Names:",df.info());
+print("Description Of Data\n",df.describe());
+
+df.loc[10]=["Purnendu",20,None]
+df.loc[11]=["Raj",20,82]
+df.loc[12]=["Yesh",None,90]
+df.loc[13]=["Shreyash",21,72]
+df.loc[14]=["Shobhit",21,None]
+df["remark"]=None
+print(df)

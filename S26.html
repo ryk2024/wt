@@ -1,0 +1,108 @@
+<html>
+	<body>
+		<form action="S30.php" method="GET">
+			Enter Event Title : <input type="text" name="hospname">
+			<br><br>
+			<input type="submit">
+		</form>
+	</body>
+</html>
+
+
+
+php
+
+<html>
+    <head>
+<style>
+    th{
+        padding:10px;
+        color:yellow;
+        background-color:red;
+    }
+    tr
+    {
+        padding:10px;
+        color:red;
+        background-color:yellow;
+    }
+    </style>
+</head>
+<body>
+    <table border=1 style="border-collapse:collapse">
+
+<?php
+$hospname=$_POST['hospname'];
+echo"Entered Hospital Name is:".$hospname."<br>";
+$con=pg_connect("host=kali user=kali dbname=postgres password=123456");
+if(!$con)
+{
+    echo"Connection Failed....";
+}
+else
+{
+    echo"Connected Sucessfully....";
+}
+$sql="select d.dname,d.address,d.city,d.area,h.hname,h.hcity from dh join Doctor d on dh.doc_no=d.doc_no join Hospital h on dh.hosp_no=h.hosp_no where h.hname='$hospname' and dh.doc_no=d.doc_no;";
+$res=pg_query($con,$sql);
+if(!$res)
+{
+    echo"<br>".pg_last_error($con);
+}
+else{
+    echo"<tr>";
+    echo"<th>Doctor Name</th>";
+    echo"<th>Address</th>";
+    echo"<th>City</th>";
+    echo"<th>Area</th>";
+    echo"<th>Hospital Name</th>";
+    echo"<th>Hospital City</th>";
+    echo"</tr>";
+    while($row=pg_fetch_row($res))
+    {
+        echo"<tr>";
+        echo"<td>$row[0]</td>";
+        echo"<td>$row[1]</td>";
+        echo"<td>$row[2]</td>";
+        echo"<td>$row[3]</td>";
+        echo"<td>$row[4]</td>";
+        echo"<td>$row[5]</td>";
+        echo"</tr>";
+
+
+    }
+    
+
+}
+pg_close($con);
+?>
+</table>
+</body>
+</html>
+
+
+fds
+
+
+# 1. Generate a random array of 50 integers and display them using a line chart, 
+# scatter plot, histogram and box plot. Apply appropriate color, labels and styling 
+# options.
+
+# import numpy as np
+# import matplotlib.pyplot as plt
+# x=np.random.rand(50)
+# y=np.random.rand(50)
+# plt.plot(x,y)
+# plt.hist(x,color="m",linewidth=2,edgecolor="b",bins=30,alpha=0.6)
+# plt.boxplot(x)
+# plt.scatter(x,y,color="m",marker="*")
+# plt.show()
+
+# Q2. Create two lists, one representing subject names and the other representing 
+# marks obtained in those subjects. Display the data in a pie chart.
+
+# import matplotlib.pyplot as plt
+# sub=['FDS','WT','TCS','CN']
+# marks=[77,89,80,92]
+# plt.bar(marks,sub)
+# plt.show()

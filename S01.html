@@ -1,0 +1,107 @@
+
+<html>
+
+<head>
+    <style>
+        .main {
+            width: 20%;
+            height: auto;
+            background-color: aqua;
+            position: relative;
+            margin: 100px;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .sub {
+            background: yellowgreen;
+            border-radius: 20% 20% 20% 20%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .re {
+            background: blue;
+            border-radius: 20% 20% 20% 20%;
+            color: white;
+            cursor: pointer;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Project Management</h1>
+    <form action="">
+        <div class="main">
+
+            <div class="name">
+                <label for="nm">Project Name: </label>
+                <input type="text" name="nm" id="nm" required>
+            </div>
+            <br>
+            <div class="assgn">
+                <label for="ass">Assigned to: </label>
+                <select name="a" id="ass">
+                    <option value="1">caty perry</option>
+                    <option value="2">perry perry</option>
+                    <option value="3">de perry</option>
+                </select>
+            </div>
+            <br>
+            <div class="sd>
+            <label for=" d">Start Date</label>
+                <input type="date" id="d">
+            </div>
+            <br>
+            <div class="ed">
+                <label for="e">End Date: </label>
+                <input type="date" id="e">
+            </div>
+            <br>
+            <div class="pri">
+                <label for="p">Priority: </label>
+                <input type="radio" name="priority">High
+                <input type="radio" name="priority">Average
+                <input type="radio" name="priority">Low
+            </div>
+            <br>
+            <div class="dess">
+                <label for="d">Description:</label>
+                <textarea name="des" id="d" cols="10" rows="1"></textarea>
+            </div>
+            <br>
+            <div class="btn">
+                <input type="submit" name="Submit" class="sub">
+                <input type="reset" value="Clear" class="re">
+            </div>
+
+        </div>
+    </form>
+</body>
+
+</html>
+
+<!--
+FDS
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+d = pd.read_csv('Iris.csv')
+ax=plt.subplots(1,1,figsize=(10,8)) #defines size of chart area
+d['Species'].value_counts().plot.pie() #counts distinct values in dataset
+plt.title("Iris Species %")
+plt.show()
+
+# Q2B
+import pandas as p
+df = pd.read_csv('winequality-red.csv')
+df.shape # no.of rows & cols
+df.describe() #stats data
+df.info() #features
+df.dtypes
+
+
+-->

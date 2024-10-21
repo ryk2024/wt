@@ -1,0 +1,78 @@
+<html>
+
+<body>
+    <form action="S12.php" method="post">
+        enter a:
+        <input type="int" name="a"><br>
+        enter b:
+        <input type="int" name="b"><br>
+        Choose the Arithmetic oprtns :<br>
+        1:'+'
+        <input type="radio" name="op" value="1"><br>
+        2:'-'
+        <input type="radio" name="op" value="2"><br>
+        3:'/'
+        <input type="radio" name="op" value="3"><br>
+        4:'*'
+        <input type="radio" name="op" value="4"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
+
+
+PHP
+
+
+<?php
+
+$a=$_POST['a'];
+$b=$_POST['b'];
+$op=$_POST['op'];
+
+switch($op)
+{
+    case 1:$c=$a+$b;
+        echo" addition : $c";
+        break;
+        case 2:$c=$a-$b;
+        echo" subtraction : $c";
+        break;
+        case 3:$c=$a/$b;
+        echo" Division : $c";
+        break;
+        case 4:$c=$a*$b;
+        echo" Multiplication : $c";
+        break;
+}
+
+?>
+
+
+FDS
+
+
+# Q2A)
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x = np.random.randn(50)
+# y = np.random.randn(50)
+# plt.plot(x,y)
+# plt.show()
+# plt.scatter(x,y)
+# plt.show()
+# plt.hist(x)
+# plt.show()
+# plt.boxplot(y, vert=False)
+# plt.show()
+
+
+# Q2B)
+# import pandas as p
+# df=p.DataFrame({'name':['kunal','rekha','satish','ashish','radha'],
+#  'dept':['production','computer','manufacturing',None,'manufacturing'],
+#  'salary':[100000,300000,20000,300000,80000] })
+# print(df)
+# d=df.dropna()
+# print(d)

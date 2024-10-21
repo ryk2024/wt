@@ -1,0 +1,70 @@
+<html>
+    <body>
+        <form action="S17.php" method="post">
+            select the option:-<br>
+            asc by val:
+            <input type="radio" name="op" value="1"><br>
+            asc by key
+            <input type="radio" name="op" value="2"><br>
+            desc by val
+            <input type="radio" name="op" value="3"><br>
+            desc by key
+            <input type="radio" name="op" value="4"><br>
+            <input type="submit">
+        </form>
+    </body>
+</html>
+
+php
+
+<?php
+
+$op=$_POST['op'];
+
+$arr = array("Sophia"=>"31","Jacob"=>"41","William"=>"39","Ramesh"=>"40");
+
+switch($op)
+{
+    case 1: asort($arr);
+    print_r($arr);
+    break;
+    case 2: ksort($arr);
+    print_r($arr);
+    break;
+    case 3:arsort($arr);
+    print_r($arr);
+    break;
+    case 4: krsort($arr);
+    print_r($arr);
+    break;
+}
+
+?>
+
+FDS
+
+# Q1
+# from pandas import *
+# from numpy import *
+# from matplotlib.pyplot import * 
+# df=read_csv("Iris.csv")
+# data1=df['SepalLengthCm']
+# data2=df['SepalWidthCm']
+# scatter(data1,data2,color="m",marker="*")
+# show()
+
+# Q2
+import pandas as pd
+import matplotlib.pyplot as plt
+df=pd.DataFrame(columns=["Name","Age","Salary","Department"])
+df.loc[0]=["Sankalp",21,3400,"CS"]
+df.loc[1]=["Manas",20,5345,"ELE"]
+df.loc[2]=["Rahul",19,432,"ELE"]
+df.loc[3]=["Aman",20,2312,"ELE"]
+df.loc[4]=["Shwan",20,21321,"CS"]
+df.loc[5]=["Dhawan",21,213,"ELE"]
+df.loc[6]=["Shrawan",20,234,"ELE"]
+df.loc[7]=["Shatanu",21,32423,"ELE"]
+df.loc[8]=["Shrawani",22,54435,"ELE"]
+df.loc[9]=["Shawn",20,43534,"ELE"]
+print(df)

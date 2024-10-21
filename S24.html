@@ -1,0 +1,73 @@
+<html>
+    <body>
+        <form action="S24.php" method="post">
+            enter file:
+            <input type="file" name="f">
+            enter file 1:
+            <input type="file" name="f1">
+            <input type="submit">
+        </form>
+    </body>
+</html>
+
+PHP
+
+//  WT Slip - 24 Q1
+
+<?php
+
+
+$firstFile = $_POST['f'];
+$secondFile = $_POST['f1'];
+
+// Check if files exist
+if (!file_exists($firstFile)) {
+    echo "The first file does not exist!\n";
+    exit();
+}
+
+if (!file_exists($secondFile)) {
+    echo "The second file does not exist!\n";
+    exit();
+}
+
+// Read content of the first file
+$firstFileContent = file_get_contents($firstFile);
+
+// Append content of the first file to the second file
+if (file_put_contents($secondFile, $firstFileContent, FILE_APPEND)) {
+    echo "Successfully appended content of $firstFile to $secondFile!\n";
+} else {
+    echo "Failed to append content!\n";
+}
+
+?>
+
+
+FDS
+
+# Q1. Import dataset “iris.csv”
+# 1. Write a Python program to create a Bar plot to get the frequency of the three 
+# species of the Iris data. 
+# 2. Write a Python program to create a histogram of the three species of the Iris data. 
+
+# PROGRAM 1 -
+# from pandas import *
+# from numpy import *
+# from matplotlib.pyplot import * 
+# df=read_csv("Iris.csv")
+# data1=df['age']
+# data2=df['percentage']
+# # bar(data1,data2)
+# hist(data1,data2)
+# show()
+
+# PROGRAM 2 -
+# from pandas import *
+# from numpy import *
+# from matplotlib.pyplot import *
+# df=read_csv("Iris.csv")
+# data=df['name']
+# hist(data,edgecolor="k",linewidth=2,bins=3,alpha=0.8)
+# show()
+
